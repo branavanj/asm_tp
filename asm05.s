@@ -11,21 +11,20 @@ _start:
     cmp rdi, 3
     jl insufficient_args
 
-    ;--------Convertit le premier argument en entier---------
+   
     mov rsi, [rsp+16]
     call atoi
     mov [num1], rax
 
-    ;--------Convertit le deuxième argument en entier---------
+  
     mov rsi, [rsp+24]
     call atoi
     mov [num2], rax
 
-    ;--------Effectue l'addition des deux nombre et stocke le résultat---------
+    
     mov rax, [num1]
     add rax, [num2]
 
-    ;--------Convertit le résultat en chaîne de caractères---------
     mov rdi, result
     call itoa
 
@@ -45,12 +44,12 @@ insufficient_args:
     syscall
 
 atoi:
-    ;--------Fonction pour convertir une chaîne ASCII en entier---------
+    
     xor rax, rax
     .loop:
-        ;--------Charge le caractère actuel qui est dans rsi---------
+        
         movzx rcx, byte [rsi]
-        ;--------Vérifie si le caractère est le caractère nul (fin de chaîne)---------
+      
         test rcx, rcx
         jz .done
         sub rcx, '0'
@@ -62,7 +61,7 @@ atoi:
         ret
 
 itoa:
-    ;--------Fonction pour convertir un entier en chaîne ASCII---------
+    
     mov rbx, 10
     lea rdi, [rdi + 20]
     mov byte [rdi], 0
