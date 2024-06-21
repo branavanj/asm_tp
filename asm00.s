@@ -1,7 +1,8 @@
-section .text
 global _start
 
+section .text
+
 _start:
-    mov rax, 60        ; Code de retour
-    mov rdi, 0       ; Appel système pour exit
-    syscall           ; Effectuer l'appel système
+    mov rax, 60
+    mov rdi, 0
+    syscall
